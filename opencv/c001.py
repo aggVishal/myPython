@@ -1,7 +1,11 @@
+#Read and write images
 import cv2
-import numpy as np 
 
 img=cv2.imread('sample.jpg',0)
 cv2.imshow('image',img)
-cv2.waitKey(0)
-cv2.destroyAllWindows()
+k= cv2.waitKey(0)
+if k==27:
+    cv2.destroyAllWindows()
+
+elif k==ord('s'):
+    cv2.imwrite('sample_copy.png',img)
