@@ -16,10 +16,13 @@ while cap.isOpened():
 
     for (x,y,w,h) in faces:
         cv2.rectangle(img,(x,y),(x+w,y+h),(0,255,0),3)
-        eyes=eye_cascade.detectMultiScale(img)
+        roi_gray=gray[y:y+h,x:x+w]
+        roi_color=img[y:y+h,x:x+w]
+        
+        eyes=eye_cascade.detectMultiScale(roi_gray)
         
         for(xe,ye,we,he) in eyes:
-            cv2.rectangle(img,(xe,ye),(xe+we,ye+he),(255,0,0),2)
+            cv2.rectangle(roi_color,(xe,ye),(xe+we,ye+he),(255,0,0),2)
     
     cv2.imshow('img',img)
     if cv2.waitKey(1) & 0xFF==ord('q'):
