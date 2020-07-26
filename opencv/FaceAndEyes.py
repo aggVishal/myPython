@@ -1,4 +1,4 @@
-# Face detection using Haar Cascade
+# Face and eyes detection using Haar Cascade
 import numpy as np
 import cv2
 
